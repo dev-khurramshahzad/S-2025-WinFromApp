@@ -160,6 +160,7 @@
             this.btnChooseImage.TabIndex = 7;
             this.btnChooseImage.Text = "Browse";
             this.btnChooseImage.UseVisualStyleBackColor = true;
+            this.btnChooseImage.Click += new System.EventHandler(this.btnChooseImage_Click);
             // 
             // ImgPreview
             // 

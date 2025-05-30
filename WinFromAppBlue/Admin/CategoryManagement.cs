@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -14,12 +15,17 @@ namespace WinFromAppBlue.Admin
 {
     public partial class CategoryManagement : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\Projects\\Databases\\db_Gray.mdf;Integrated Security=True;Connect Timeout=30");
+
+        public string FileName = "No Image Available";
+
+        SqlConnection con = Program.con;
 
         public CategoryManagement()
         {
             InitializeComponent();
             LoadData();
+
+            ImgPreview.Image = Image.FromFile(Path.Combine(Directory.GetCurrentDirectory(), "delivery_2.png"));
 
 
         }
@@ -36,7 +42,7 @@ namespace WinFromAppBlue.Admin
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand($"INSERT INTO Categories VALUES ('{txtName.Text}','{txtDetail.Text}','Image Path','{ddlStatus.SelectedItem.ToString()}')", con);
+            SqlCommand cmd = new SqlCommand($"INSERT INTO Categories VALUES ('{txtName.Text}','{txtDetail.Text}','{FileName}','{ddlStatus.SelectedItem.ToString()}')", con);
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
@@ -173,6 +179,30 @@ namespace WinFromAppBlue.Admin
                 MessageBox.Show($"Somthing went wrong, Please try again\nTrace: {ex.Message}", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             }
+
+
+        }
+
+        private void btnChooseImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image Files Only|*.jpg;*.png;*.jpeg;";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                ImgPreview.Image = Image.FromFile(ofd.FileName);
+                 FileName = Path.GetFileName(ofd.FileName);
+
+                string SavePath = Path.Combine(Directory.GetCurrentDirectory(),FileName);
+
+                File.Copy(ofd.FileName, SavePath,true);
+
+
+            }
+
+            
+
+            
 
 
         }

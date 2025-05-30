@@ -105,6 +105,30 @@
     <Compile Include="SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users\Brands.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Brands.Designer.cs">
+      <DependentUpon>Brands.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Categories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Categories.Designer.cs">
+      <DependentUpon>Categories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Product.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\Product.Designer.cs">
+      <DependentUpon>Product.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Admin\ProductManagement.resx">
       <DependentUpon>ProductManagement.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,6 +159,15 @@
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Users\Brands.resx">
+      <DependentUpon>Brands.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\Categories.resx">
+      <DependentUpon>Categories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\Product.resx">
+      <DependentUpon>Product.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -148,9 +181,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Users\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Database\db_Gray.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
